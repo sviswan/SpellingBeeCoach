@@ -24,7 +24,7 @@
 
 <script>
 import WordGenerator from './components/WordGenerator.vue';
-import WordProcessor from './components/WordProcessor.vue';
+import WordProcessor from './components/WordProcessor.vue';     
 import WordStatistics from './components/WordStatistics.vue';
 
 export default {

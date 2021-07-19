@@ -19,4 +19,8 @@ export default {
 .btn-success {
     font-size: x-large;
 }
+.btn {
+    position: relative;
+}
+
 </style>

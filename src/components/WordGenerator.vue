@@ -4,8 +4,8 @@
     <h5 style="color: green">Your next word is....</h5>
     <audio :src="getaudioURL" controls></audio><br/>
     <br />
-    <button type="button" class="btn btn-warning" @click="showDefn">Show Definition(s)</button><br/>
-    <ol v-if="this.$store.state.showDefinition">
+    <button type="button" class="btn btn-warning" @click="showDefn"> {{showDefinition? 'Hide':'Show'}} Definition(s)</button>
+    <ol v-if="showDefinition"><br/>
       <li v-for="defn in availableWord[0].shortdef" :key="defn"> {{ defn }}</li>
     </ol>
   </div>
@@ -21,18 +21,14 @@ import { mapActions, mapMutations } from 'vuex';
 export default {
   name: 'WordGenerator',
   created() {
-    console.log('created WordGenerator');
-    this.showDefn = false;
     this.getWordDetails();
-  },
-  data() {
-    return {
-      showDefn: false,
-      };
   },
   computed: {
     availableWord() {
       return this.$store.state.word_details;  
+    },
+    showDefinition() {
+     return this.$store.state.showDefinition;
     },
     getaudioURL() {
       return "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/"+this.$store.state.word_details[0].hwi.prs[0].sound.audio+".mp3";
