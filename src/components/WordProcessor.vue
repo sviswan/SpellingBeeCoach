@@ -10,8 +10,10 @@
     <span v-if="show_word_details">
         <div>
           <p><strong>Spelling</strong> - {{ word_details[0].meta.id }}</p>
-          <p><strong>Stem words</strong> -  {{word_details[0].meta.stems}}</p>
-          <p><strong>Definition(s)</strong> - {{ word_details[0].shortdef }}</p>
+          <p><strong>Part of speech</strong> - {{word_details[0].fl}} </p>
+          <p><strong>Stem words</strong> -  {{getStems}}</p>
+          <p><strong>Etymology </strong> - {{word_details[0].et[0][1]}}</p>
+
         </div>
       </span>
     </div>
@@ -35,8 +37,13 @@ export default {
     },
     methods : {
         ...mapMutations(['handleSpellingSubmit', 'setSpellingState']),
+        getStems() {
+            if(this.word_details[0].meta.stems) return this.word_details[0].meta.stems;
+            else return 'No stem words available';
+        }
     },
 };
+
 </script>
 <style scoped>
 p {

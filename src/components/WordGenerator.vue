@@ -1,8 +1,13 @@
 <template>
 <div>
   <div v-if="availableWord">
-    <h5 style="color: green">Your next word is....</h5>
+    <h3>Your next word is...</h3>
+    <div v-if="getaudioURL === 'no audio available'">
+      <p>Audio is not available for <strong><u>{{this.$store.state.random_word}}</u></strong>. Click next word please.</p>
+    </div>
+    <div v-else>
     <audio :src="getaudioURL" controls></audio><br/>
+    </div>
     <br />
     <button type="button" class="btn btn-warning" @click="showDefn"> {{showDefinition? 'Hide':'Show'}} Definition(s)</button>
     <ol v-if="showDefinition"><br/>
@@ -31,7 +36,23 @@ export default {
      return this.$store.state.showDefinition;
     },
     getaudioURL() {
-      return "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/"+this.$store.state.word_details[0].hwi.prs[0].sound.audio+".mp3";
+      const word_detail = this.$store.state.word_details[0];
+      var audio = "";
+      if(word_detail.hwi.prs) {
+      word_detail.hwi.prs[0].sound.audio? audio = word_detail.hwi.prs[0].sound.audio: 
+         word_detail.hwi.prs[1].sound.audio ? audio = word_detail.hwi.prs[1].sound.audio: audio = null;
+      } else audio = null;
+      if(audio != null && (this.$store.state.random_word === word_detail.meta.id.split(':')[0] || (word_detail.stems && word_detail.stems.includes(this.$store.state.random_word)))) {
+        var sub_dir = "";
+        audio.substring(0,3) === 'bix'? sub_dir = 'bix':
+          audio.substring(0,3) === 'gg'? sub_dir = 'gg':
+            audio.substring(0,1).includes('^(?=.*?[1-9])[0-9()-]+$_')? sub_dir = audio.substring(0,1):
+              sub_dir = word_detail.meta.id.charAt(0).toLowerCase();
+        console.log('audio: '+ audio + '.....'+'sub_dir: '+sub_dir );
+        return "https://media.merriam-webster.com/audio/prons/en/us/mp3/"+sub_dir+"/"+audio+".mp3";
+      } else {
+        return 'no audio available';
+      }
     },
   },
   methods: {

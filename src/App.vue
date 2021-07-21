@@ -1,21 +1,21 @@
 <template>
-  <div class="container-fluid">
-  <div class="row">
-    <div class="col">
+  <div class="container-fluid bg-all">
+  <div class="row mx-lg-n5">
+    <div class="col py-3 px-lg-5">
       <img alt="Bee logo" src="./assets/logo_2.jpg">
     </div>
-    <div class="col">
+    <div class="col py-3 px-lg-5">
       <img alt="Bee logo" src="./assets/logo_1.png">
     </div>
   </div>
-  <div class="row">
-    <div class="col">
+  <div class="row mx-lg-n5">
+    <div class="col py-3 px-lg-5 border bg-green">
       <WordGenerator/>
     </div>
-    <div class="col">
+    <div class="col py-3 px-lg-5 border bg-blue">
       <WordProcessor/>
     </div>
-    <div class="col">
+    <div class="col py-3 px-lg-5 border bg-yellow">
       <WordStatistics/>
     </div>
   </div>
@@ -53,5 +53,18 @@ input[type=text] {
   box-sizing: border-box;
   border: none;
   border-bottom: 3px solid green;
+}
+.bg-yellow {
+    background-color: #fff3cd !important;
+}
+.bg-green {
+    background-color: #e4ffcd !important;
+}
+.bg-blue {
+    background-color: #cdfcff !important;
+}
+
+.bg-all {
+    background-color: #ffdbcd !important;
 }
 </style>
