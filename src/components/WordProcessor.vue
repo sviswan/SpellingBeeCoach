@@ -1,6 +1,6 @@
 <template>
     <div v-if="word_details">
-      <input type="text" v-model="spelling" placeholder="Type spelling here..."/><br/>
+      <input type="text" v-model="spelling" placeholder="Type spelling"/><br/>
       <button type="button" class="btn btn-warning" @click="handleSpellingSubmit">Submit</button>
       <span v-if="show_result">
           <p>You entered <u><strong>{{spelling == ""? 'NO ANSWER' : spelling}}</strong></u></p>
@@ -11,7 +11,7 @@
         <div>
           <p><strong>Spelling</strong> - {{ word_details[0].meta.id }}</p>
           <p><strong>Part of speech</strong> - {{word_details[0].fl}} </p>
-          <p><strong>Stem words</strong> -  {{getStems}}</p>
+          <!-- <p><strong>Stem words</strong> -  {{getStems}}</p> -->
           <p><strong>Etymology </strong> - {{word_details[0].et[0][1]}}</p>
 
         </div>
