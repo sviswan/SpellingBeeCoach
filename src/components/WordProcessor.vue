@@ -11,7 +11,7 @@
         <div>
           <p><strong>Spelling</strong> - {{ word_details[0].meta.id }}</p>
           <p v-if="word_details[0].fl"><strong>Part of speech</strong> - {{word_details[0].fl}} </p>
-          <p v-if="this.word_details[0].meta.stems"><strong>Stem words</strong>{{this.word_details[0].meta.stems}} </p>
+          <p v-if="word_details[0].meta.stems"><strong>Stem words</strong>{{word_details[0].meta.stems}} </p>
           <p v-if="word_details[0].et[0][1]"><strong>Etymology </strong> - {{word_details[0].et[0][1]}}</p>
         </div>
       </span>
