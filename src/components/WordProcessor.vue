@@ -37,10 +37,10 @@ export default {
     },
     methods : {
         ...mapMutations(['handleSpellingSubmit', 'setSpellingState']),
-        getStems() {
-            if(this.word_details[0].meta.stems) return this.word_details[0].meta.stems;
-            else return 'No stem words available';
-        }
+        // getStems() {
+        //     if(this.word_details[0].meta.stems) return this.word_details[0].meta.stems;
+        //     else return 'No stem words available';
+        // }
     },
 };
 
