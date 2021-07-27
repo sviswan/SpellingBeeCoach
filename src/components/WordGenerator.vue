@@ -3,7 +3,7 @@
   <div v-if="availableWord">
     <h3>Your next word is...</h3>
     <div>
-    <audio :src="getaudioURL" controls></audio><br/>
+    <audio :src="getaudioURL" controls autoplay></audio><br/>
     </div>
     <br />
     <button type="button" class="btn btn-warning" @click="showDefn"> {{showDefinition? 'Hide':'Show'}} Definition(s)</button>
